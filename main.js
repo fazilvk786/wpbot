@@ -14,7 +14,7 @@ let { spawnSync } = require('child_process')
 let WAConnection = simple.WAConnection(_WAConnection)
 
 
-global.owner = ['6281515860089'] // Put your number here
+global.owner = ['19795001362'] // Put your number here
 global.mods = [] // Want some help?
 global.prems = [] // Premium user has unlimited limit
 global.APIs = { // API Prefix
@@ -195,8 +195,8 @@ conn.handler = async function (m) {
         if (xp > 99) m.reply('Ngecit -_-') // Hehehe
         else m.exp += xp
         if (!isPrems && global.DATABASE._data.users[m.sender].limit < m.limit * 1 && plugin.limit) {
-          this.reply(m.chat, `Limit anda habis, silahkan beli melalui *${usedPrefix}buy*`, m)
-          continue // Limit habis
+          this.reply(m.chat, `നിങ്ങളുടെ പരിധി കഴിഞ്ഞു, ദയവായി വാങ്ങുക *${usedPrefix}വാങ്ങുക*`, m)
+          continue // പരിധി തീർന്നു
         }
         try {
           await plugin.call(this, m, {
@@ -267,8 +267,8 @@ conn.handler = async function (m) {
     }
   }
 }
-conn.welcome = 'Hai, @user!\nSelamat datang di grup @subject'
-conn.bye = 'Selamat tinggal @user!'
+conn.welcome = 'Hi👋, @user!\nഞങ്ങളുടെ ഗ്രൂപ്പിലേക്ക് സ്വാഗതം @subject'
+conn.bye = 'ഇത്രയും കാലം ഞങ്ങളോടൊപ്പം ചിലവഴിച്ചതിന് നന്ദി @user!'
 conn.onAdd = async function ({ m, participants }) {
   let chat = global.DATABASE._data.chats[m.key.remoteJid]
   if (!chat.welcome) return
@@ -313,9 +313,9 @@ conn.onDelete = async function (m) {
   let chat = global.DATABASE._data.chats[m.key.remoteJid]
   if (chat.delete) return
   await this.reply(m.key.remoteJid, `
-Terdeteksi @${m.participant.split`@`[0]} telah menghapus pesan
+കണ്ടെത്തി @${m.participant.split`@`[0]} സന്ദേശം ഇല്ലാതാക്കി
 
-Untuk mematikan fitur ini, ketik
+ഈ സവിശേഷത ഓഫുചെയ്യാൻ, ടൈപ്പുചെയ്യുക
 *.enable delete*
 `.trim(), m.message, {
     contextInfo: {
@@ -346,14 +346,14 @@ conn.on('close', () => {
 
 global.dfail = (type, m, conn) => {
   let msg = {
-    rowner: 'Perintag ini hanya dapat digunakan oleh _*OWWNER!1!1!*_',
-    owner: 'Perintah ini hanya dapat digunakan oleh _*Owner Bot*_!',
-    mods: 'Perintah ini hanya dapat digunakan oleh _*Moderator*_ !',
-    premium: 'Perintah ini hanya untuk member _*Premium*_ !',
-    group: 'Perintah ini hanya dapat digunakan di grup!',
-    private: 'Perintah ini hanya dapat digunakan di Chat Pribadi!',
-    admin: 'Perintah ini hanya untuk *Admin* grup!',
-    botAdmin: 'Jadikan bot sebagai *Admin* untuk menggunakan perintah ini!'
+    rowner: 'ഈ ബ്രസറിന് മാത്രമേ ഇത് ഉപയോഗിക്കാൻ കഴിയൂ _*OWWNER!1!1!*_',
+    owner: 'ഈ കമാൻഡ് മാത്രമേ ഉപയോഗിക്കാൻ കഴിയൂ _*Owner Bot*_!',
+    mods: 'ഈ കമാൻഡ് മാത്രമേ ഉപയോഗിക്കാൻ കഴിയൂ _*Moderator*_ !',
+    premium: 'ഈ കമാൻഡ് പ്രീമിയം അംഗങ്ങൾക്ക് മാത്രമുള്ളതാണ് _*Premium*_ !',
+    group: 'ഈ കമാൻഡ് ഗ്രൂപ്പുകളിൽ മാത്രമേ ഉപയോഗിക്കാൻ കഴിയൂ!',
+    private: 'ഈ കമാൻഡ് സ്വകാര്യ ചാറ്റുകളിൽ മാത്രമേ ഉപയോഗിക്കാൻ കഴിയൂ!',
+    admin: 'ഈ കമാൻഡ് ഗ്രൂപ്പ്*അഡ്മിന്* മാത്രമാണ്!',
+    botAdmin: 'ഈ കമാൻഡ് ഉപയോഗിക്കുന്നതിന് ബോട്ടിനെ *അഡ്മിൻ* ആക്കുക!'
   }[type]
   if (msg) conn.reply(m.chat, msg, m)
 }
