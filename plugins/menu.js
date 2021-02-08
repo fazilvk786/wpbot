@@ -117,7 +117,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     text = text.replace(new RegExp(`%(${Object.keys(replace).join`|`})`, 'g'), (_, name) => replace[name])
     conn.reply(m.chat, text.trim(), m)
   } catch (e) {
-    conn.reply(m.chat, 'Maaf, menu sedang error', m)
+    conn.reply(m.chat, 'ക്ഷമിക്കണം, മെനു തെറ്റാണ്', m)
     throw e
   }
 }
